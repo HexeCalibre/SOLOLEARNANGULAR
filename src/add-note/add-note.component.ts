@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NOTES } from '../app/notes'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-note',
@@ -11,6 +12,9 @@ import { NOTES } from '../app/notes'
   styleUrl: './add-note.component.css'
 })
 export class AddNoteComponent {
+  router = inject(Router);
+
+  
   addNoteForm = new FormGroup({
     title: new FormControl('', Validators.required),
     text: new FormControl(''),
@@ -33,6 +37,9 @@ export class AddNoteComponent {
       };
       NOTES.unshift(newNote);
       this.addNoteForm.reset();
+
+      
+      this.router.navigateByUrl('/');
     }
   }
 }

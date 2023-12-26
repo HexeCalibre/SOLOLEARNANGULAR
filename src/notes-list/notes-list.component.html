@@ -1,6 +1,9 @@
 <div class="container">
+  <nav>
+    <button routerLink="./new">Add New</button>
+  </nav>
   <ul class="notes">
-    @for (note of notes; track $index){
+    @for (note of notes; track $index) {
     <li>
       <button (click)="show(note.title)">
         <span class="note-title">{{ note.title }}</span>
